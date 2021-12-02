@@ -6,26 +6,32 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:minHeight="100dp"
-    android:padding="16dp">
+    android:paddingTop="8dp"
+    android:paddingHorizontal="16dp"
+    android:background="?android:attr/selectableItemBackground"
+    android:id="@+id/news_item">
 
     <TextView
-        android:id="@+id/title"
+        android:id="@+id/tv_title"
         android:layout_width="wrap_content"
-        android:maxWidth="250dp"
+        android:maxWidth="270dp"
         android:layout_height="wrap_content"
-        android:text="Title_holder"
+        android:text="@string/title_holder"
         android:textSize="18sp"
         android:textColor="@android:color/black"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
+        android:id="@+id/tv_source"
         android:layout_width="wrap_content"
+        android:maxWidth="270dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="Publiser_holder"
-        app:layout_constraintStart_toStartOf="@+id/title"
-        app:layout_constraintTop_toBottomOf="@+id/title" />
+        android:text="@string/source_holder"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="@+id/tv_title"
+        app:layout_constraintTop_toBottomOf="@+id/tv_title" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
@@ -38,8 +44,8 @@
 
         <ImageView
             android:id="@+id/iv_news"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
             tools:src="@tools:sample/avatars" />
     </androidx.cardview.widget.CardView>
 
@@ -47,10 +53,12 @@
         android:id="@+id/divider"
         android:layout_width="match_parent"
         android:layout_height="1dp"
+        android:layout_marginTop="8dp"
         android:background="@color/secondaryColor"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_source" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

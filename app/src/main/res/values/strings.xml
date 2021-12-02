@@ -3,7 +3,25 @@
     <string name="title_home">Home</string>
     <string name="title_search">Search</string>
     <string name="title_menu">Menu</string>
-    <!-- TODO: Remove or change this placeholder text -->
+
+    <!-- Category -->
+    <string name="news">News</string>
+    <string name="technology">Technology</string>
+    <string name="business">Business</string>
+    <string name="entertainment">Entertainment</string>
+    <string name="health">Health</string>
+    <string name="sport">Sport</string>
+
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <!-- TODO: Remove or change this placeholder text -->
+
+    <string name="news_content_holder">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Tempor orci eu lobortis elementum nibh tellus molestie nunc. Lectus arcu bibendum at varius vel pharetra vel turpis. Consequat mauris nunc congue nisi. Bibendum ut tristique et egestas quis ipsum suspendisse ultrices. Blandit massa enim nec dui. Tincidunt nunc pulvinar sapien et ligula ullamcorper malesuada proin libero. Eu ultrices vitae auctor eu. Justo donec enim diam vulputate ut pharetra sit. Ut venenatis tellus in metus vulputate eu scelerisque. Tempor commodo ullamcorper a lacus vestibulum sed arcu non odio. Tortor vitae purus faucibus ornare suspendisse sed nisi lacus sed. Vitae proin sagittis nisl rhoncus mattis rhoncus urna. Ac tincidunt vitae semper quis. Est velit egestas dui id ornare arcu odio ut sem. Nec ultrices dui sapien eget mi proin sed libero. Mi tempus imperdiet nulla malesuada pellentesque. Ligula ullamcorper malesuada proin libero nunc consequat interdum. Molestie a iaculis at erat pellentesque adipiscing commodo elit. Mattis vulputate enim nulla aliquet. Volutpat sed cras ornare arcu dui vivamus arcu felis. Lacus vestibulum sed arcu non odio euismod lacinia at quis. Cursus eget nunc scelerisque viverra mauris. Molestie a iaculis at erat pellentesque adipiscing commodo elit at. Cursus turpis massa tincidunt dui ut ornare lectus sit amet. Massa tincidunt dui ut ornare lectus sit amet est placerat. Nisi quis eleifend quam adipiscing vitae proin sagittis. Eu facilisis sed odio morbi quis. Dis parturient montes nascetur ridiculus mus mauris vitae. Scelerisque in dictum non consectetur a erat nam at lectus. Massa eget egestas purus viverra. Condimentum lacinia quis vel eros donec ac odio tempor orci. Lectus sit amet est placerat in egestas erat. Dignissim sodales ut eu sem integer vitae justo eget. Metus aliquam eleifend mi in nulla. Eu volutpat odio facilisis mauris sit. Diam quam nulla porttitor massa id neque aliquam vestibulum. In egestas erat imperdiet sed euismod. Euismod nisi porta lorem mollis aliquam ut. Nulla at volutpat diam ut venenatis tellus in metus. Blandit aliquam etiam erat velit scelerisque in dictum non. Viverra aliquet eget sit amet tellus cras adipiscing enim. Morbi quis commodo odio aenean. Viverra vitae congue eu consequat ac felis donec et odio. Pellentesque nec nam aliquam sem et tortor consequat. Ullamcorper morbi tincidunt ornare massa. Vitae auctor eu augue ut lectus arcu bibendum at varius. Faucibus ornare suspendisse sed nisi. Sit amet purus gravida quis blandit turpis cursus. Luctus accumsan tortor posuere ac.
+
+    </string>
+    <string name="author_holder">author holder</string>
+    <string name="author">Author :</string>
+    <string name="title_news_holder">Title news</string>
+    <string name="source_holder">source_holder</string>
+    <string name="title_holder">Title_holder.akndiabdhavdaydvaygicvuaitwdfaighvbchjagvcac ahvjca</string>
+
 </resources>

@@ -14,5 +14,12 @@
         <!-- Customize your theme here. -->
         <item name="android:textColorPrimary">@color/primaryTextColor</item>
         <item name="android:textColorSecondary">@color/secondaryTextColor</item>
+        <item name="android:homeAsUpIndicator">@drawable/ic_arrow_back_line</item>
     </style>
+    
+    <style name="Theme.RNews.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
 </resources>

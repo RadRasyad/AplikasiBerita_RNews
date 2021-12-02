@@ -7,11 +7,26 @@
     tools:context=".ui.home.HomeFragment">
 
     <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tab_category"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:tabMode="scrollable"
+        app:tabIndicatorAnimationMode="elastic"
+        app:tabIndicatorColor="@color/secondaryColor"
+        app:tabSelectedTextColor="@color/secondaryColor"
+        tools:ignore="SpeakableTextPresentCheck" />
 
-    
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/viewpager2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="48dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tab_category" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
