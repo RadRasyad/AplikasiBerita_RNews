@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context=".ui.detail.DetailActivity">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.appbar.CollapsingToolbarLayout
+            android:layout_width="match_parent"
+            android:layout_height="272dp"
+            android:fitsSystemWindows="true">
+
+            <androidx.appcompat.widget.Toolbar
+                android:elevation="8dp"
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:fitsSystemWindows="false"
+                android:foregroundGravity="bottom"
+                app:layout_collapseMode="pin"
+                app:titleTextColor="@android:color/white"/>
+
+            <ImageView
+                android:id="@+id/iv_d_news"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:src="@tools:sample/backgrounds/scenic"/>
+
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="16dp">
+
+
+            <TextView
+                android:id="@+id/tv_d_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/title_news_holder"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:textColor="@color/secondaryColor"
+                android:justificationMode="inter_word"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_d"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="@string/author"
+                app:layout_constraintStart_toStartOf="@+id/tv_d_title"
+                app:layout_constraintTop_toBottomOf="@+id/tv_d_title" />
+
+            <TextView
+                android:id="@+id/tv_d_author"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/author_holder"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_d"
+                app:layout_constraintStart_toEndOf="@+id/tv_d"
+                app:layout_constraintTop_toTopOf="@+id/tv_d" />
+
+            <TextView
+                android:id="@+id/tv_d_content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="@string/news_content_holder"
+                android:textSize="16sp"
+                android:textColor="@android:color/black"
+                android:justificationMode="inter_word"
+                app:layout_constraintEnd_toEndOf="@id/tv_d"
+                app:layout_constraintStart_toStartOf="@id/tv_d"
+                app:layout_constraintTop_toBottomOf="@+id/tv_d" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+
+
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
