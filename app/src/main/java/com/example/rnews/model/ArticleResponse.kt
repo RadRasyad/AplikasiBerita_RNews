@@ -10,7 +10,7 @@ data class ArticleResponse(
     var modelSource: ModelSource?,
 
     @SerializedName("author")
-    var author: String = "",
+    var author: String? = "",
 
     @SerializedName("title")
     var title: String = "",
@@ -25,10 +25,11 @@ data class ArticleResponse(
     var urlToImage: String = "",
 
     @SerializedName("publishedAt")
-    var publishedAt: String = "",
+    var publishedAt: String? = "",
 
     @SerializedName("content")
-    var content: String = ""
+    var content: String? = ""
+
 
 ) : Parcelable
 

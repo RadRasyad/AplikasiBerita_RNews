@@ -72,6 +72,7 @@ class TechnologyFragment : Fragment() {
     }
 
     companion object {
+        //get api key
         const val secret = BuildConfig.KEY
     }
 }
