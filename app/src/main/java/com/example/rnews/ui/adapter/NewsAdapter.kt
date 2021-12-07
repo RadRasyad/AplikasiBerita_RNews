@@ -12,13 +12,26 @@ import com.example.rnews.databinding.NewsRowBinding
 import com.example.rnews.model.ArticleResponse
 import com.example.rnews.ui.detail.DetailActivity
 
-class NewsAdapter(private val listNews: MutableList<ArticleResponse>, private val context: Context) : RecyclerView.Adapter<NewsAdapter.NewsViewHolder>() {
+class NewsAdapter() : RecyclerView.Adapter<NewsAdapter.NewsViewHolder>() {
+
+    private var listNews = ArrayList<ArticleResponse>()
+    private var onItemClickCallback: OnItemClickCallback? = null
+
+    fun setOnItemClickCallback(onitemClickCallback: OnItemClickCallback) {
+        this.onItemClickCallback = onitemClickCallback
+    }
+
+    fun setList(news: ArrayList<ArticleResponse>) {
+        listNews.clear()
+        listNews.addAll(news)
+        notifyDataSetChanged()
+    }
 
     inner class NewsViewHolder(private val binding: NewsRowBinding) : RecyclerView.ViewHolder(binding.root) {
 
         fun bind(article: ArticleResponse) {
             binding.apply {
-                Glide.with(context)
+                Glide.with(itemView.context)
                     .load(article.urlToImage)
                     .placeholder(android.R.drawable.progress_horizontal)
                     .error(android.R.drawable.stat_notify_error)
@@ -28,10 +41,8 @@ class NewsAdapter(private val listNews: MutableList<ArticleResponse>, private va
                     .into(ivNews)
                 tvTitle.text = article.title
                 tvSource.text = article.modelSource?.name
-                newsItem.setOnClickListener {
-                    val intent = Intent(context, DetailActivity::class.java)
-                    intent.putExtra(DetailActivity.DETAIL_NEWS, listNews[position])
-                    context.startActivity(intent)
+                binding.root.setOnClickListener {
+                    onItemClickCallback?.onItemClicked(article)
                 }
             }
         }
@@ -47,5 +58,9 @@ class NewsAdapter(private val listNews: MutableList<ArticleResponse>, private va
     }
 
     override fun getItemCount(): Int = listNews.size
+
+    interface OnItemClickCallback {
+        fun onItemClicked(data: ArticleResponse)
+    }
 
 }

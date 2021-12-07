@@ -1,44 +1,107 @@
 package com.example.rnews.ui.search
 
+import android.content.Intent
+import android.opengl.Visibility
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.rnews.BuildConfig
+import com.example.rnews.api.ApiConfig
 import com.example.rnews.databinding.FragmentSearchBinding
+import com.example.rnews.model.ArticleResponse
+import com.example.rnews.model.NewsResponse
+import com.example.rnews.ui.adapter.NewsAdapter
+import com.example.rnews.ui.detail.DetailActivity
+import com.example.rnews.ui.menu.MenuViewModel
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class SearchFragment : Fragment() {
 
-    private lateinit var searchViewModel: SearchViewModel
     private var _binding: FragmentSearchBinding? = null
 
-    // This property is only valid between onCreateView and
-    // onDestroyView.
     private val binding get() = _binding!!
+
+    private lateinit var searchViewModel: SearchViewModel
+    private lateinit var adapter: NewsAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        searchViewModel =
-            ViewModelProvider(this).get(SearchViewModel::class.java)
+    ): View {
 
         _binding = FragmentSearchBinding.inflate(inflater, container, false)
-        val root: View = binding.root
-
-        val textView: TextView = binding.textDashboard
-        searchViewModel.text.observe(viewLifecycleOwner, Observer {
-            textView.text = it
-        })
-        return root
+        return binding.root
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        searchNews()
+
+        binding.apply {
+            rvNews.layoutManager = LinearLayoutManager(context)
+            rvNews.setHasFixedSize(true)
+        }
+
+        adapter = NewsAdapter()
+
+        searchViewModel = ViewModelProvider(requireActivity())[SearchViewModel::class.java]
+        searchViewModel.getNews().observe(requireActivity(),{
+            if (it!=null) {
+                adapter.setList(it)
+                showProgress(false)
+                binding.rvNews.adapter = adapter
+                adapter.notifyDataSetChanged()
+                //onclick item
+                adapter.setOnItemClickCallback(object : NewsAdapter.OnItemClickCallback {
+                    override fun onItemClicked(data: ArticleResponse) {
+                        Intent(context, DetailActivity::class.java).also {
+                            it.putExtra(DetailActivity.DETAIL_NEWS, data)
+                            startActivity(it)
+                        }
+                    }
+                })
+            }
+        })
+
+    }
+
+    private fun searchNews() {
+        binding.apply {
+            svNews.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
+                override fun onQueryTextSubmit(query: String?): Boolean {
+                    query?.let {
+                        if (it.isNotEmpty()) {
+                            searchViewModel.setNews(query)
+                            showProgress(true)
+                        }
+                    }
+                    return false
+                }
+
+                override fun onQueryTextChange(newText: String?): Boolean = true
+            })
+        }
+    }
+
+    private fun showProgress(state: Boolean) {
+        if (state==true) {
+            binding.lProgressbar.visibility = View.VISIBLE
+        }
+        else {
+            binding.lProgressbar.visibility = View.GONE
+        }
+
     }
 }

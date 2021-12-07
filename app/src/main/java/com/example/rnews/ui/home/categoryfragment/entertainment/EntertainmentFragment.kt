@@ -1,5 +1,6 @@
 package com.example.rnews.ui.home.categoryfragment.entertainment
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -7,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.FrameLayout
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.rnews.BuildConfig
 import com.example.rnews.R
@@ -15,6 +17,7 @@ import com.example.rnews.databinding.FragmentEntertainmentBinding
 import com.example.rnews.model.ArticleResponse
 import com.example.rnews.model.NewsResponse
 import com.example.rnews.ui.adapter.NewsAdapter
+import com.example.rnews.ui.detail.DetailActivity
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -23,7 +26,7 @@ class EntertainmentFragment : Fragment() {
     private var _binding: FragmentEntertainmentBinding? = null
     private val binding get() = _binding
 
-    var listArticle: MutableList<ArticleResponse> = ArrayList()
+    private lateinit var entertainmentViewModel: EntertainmentViewModel
     private lateinit var adapter: NewsAdapter
 
     override fun onCreateView(
@@ -42,37 +45,28 @@ class EntertainmentFragment : Fragment() {
             rvNews.layoutManager = LinearLayoutManager(context)
             rvNews.setHasFixedSize(true)
         }
-        getListNews()
 
-    }
+        adapter = NewsAdapter()
 
-    private fun getListNews() {
-
-        //get country/
-        val country = "id"
-        var category = "entertainment"
-        val apiKey = secret
-
-        //set api
-        val apiInterface = ApiConfig.apiInstance
-        val call = apiInterface.getNewsCategory(country, category, apiKey)
-        call.enqueue(object : Callback<NewsResponse> {
-            override fun onResponse(call: Call<NewsResponse>, response: Response<NewsResponse>) {
-                if (response.isSuccessful && response.body() != null) {
-                    listArticle = response.body()?.modelArticle as MutableList<ArticleResponse>
-                    adapter = context?.let { NewsAdapter(listArticle, it) }!!
-                    binding?.rvNews?.adapter = adapter
-                    adapter?.notifyDataSetChanged()
-                }
-            }
-
-            override fun onFailure(call: Call<NewsResponse>, t: Throwable) {
-                Log.d("Failed to get data", t.message!!)
+        entertainmentViewModel = ViewModelProvider(requireActivity())[EntertainmentViewModel::class.java]
+        entertainmentViewModel.setNews()
+        entertainmentViewModel.getNews().observe(requireActivity(), {
+            if (it!=null) {
+                adapter.setList(it)
+                binding?.rvNews?.adapter = adapter
+                adapter.notifyDataSetChanged()
+                //onclick item
+                adapter.setOnItemClickCallback(object : NewsAdapter.OnItemClickCallback {
+                    override fun onItemClicked(data: ArticleResponse) {
+                        Intent(context, DetailActivity::class.java).also {
+                            it.putExtra(DetailActivity.DETAIL_NEWS, data)
+                            startActivity(it)
+                        }
+                    }
+                })
             }
         })
+
     }
 
-    companion object {
-        const val secret = BuildConfig.KEY
-    }
 }

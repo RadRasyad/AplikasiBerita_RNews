@@ -1,7 +1,9 @@
 package com.example.rnews.ui.detail
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.webkit.WebView
@@ -18,16 +20,11 @@ private lateinit var binding: ActivityDetailBinding
 
 class DetailActivity : AppCompatActivity() {
 
-    companion object {
-        const val DETAIL_NEWS = "DETAIL_NEWS"
-    }
-
     private var article: ArticleResponse? = null
     private lateinit var webView: WebView
 
     private var newsTitle: String? = null
     private var newsUrl: String? = null
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -89,10 +86,27 @@ class DetailActivity : AppCompatActivity() {
                 finish()
                 true
             }
+
+            R.id.share_option -> {
+                val share = Intent(Intent.ACTION_SEND)
+                share.type = "text/plain"
+                share.addFlags(Intent.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET)
+                share.putExtra(Intent.EXTRA_TEXT, newsUrl)
+                startActivity(Intent.createChooser(share, "Bagikan ke : "))
+                true
+            }
             else -> super.onOptionsItemSelected(item)
 
         }
     }
 
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.detail_menu, menu)
+        return true
+    }
+
+    companion object {
+        const val DETAIL_NEWS = "DETAIL_NEWS"
+    }
 
 }

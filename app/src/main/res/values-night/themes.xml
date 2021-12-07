@@ -22,4 +22,8 @@
         <item name="windowNoTitle">true</item>
     </style>
 
+    <style name="Theme.RNews.SearchView">
+        <item name="android:textColorPrimary">@android:color/black</item>
+    </style>
+
 </resources>

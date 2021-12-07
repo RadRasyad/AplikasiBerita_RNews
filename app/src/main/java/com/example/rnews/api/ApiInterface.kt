@@ -20,4 +20,10 @@ interface ApiInterface {
         @Query("apiKey") apiKey: String?
     ): Call<NewsResponse>
 
+    @GET("everything")
+    fun getSearchNews(
+        @Query("q") keyword: String?,
+        @Query("language") language: String?,
+        @Query("apiKey") apiKey: String?
+    ): Call<NewsResponse>
 }
