@@ -47,7 +47,7 @@ class HomeFragment : Fragment() {
     }
 
     private fun initPagerAdapter() {
-        val sectionPagerAdapter =SectionPagerAdapter(this)
+        val sectionPagerAdapter = SectionPagerAdapter(this)
         val viewPager : ViewPager2 = binding.viewpager2
         viewPager.adapter = sectionPagerAdapter
         val tabs: TabLayout = binding.tabCategory

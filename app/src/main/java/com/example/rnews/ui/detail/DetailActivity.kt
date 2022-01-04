@@ -8,9 +8,6 @@ import android.view.MenuItem
 import android.view.View
 import android.webkit.WebView
 import android.webkit.WebViewClient
-import com.bumptech.glide.Glide
-import com.bumptech.glide.load.engine.DiskCacheStrategy
-import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.example.rnews.R
 import com.example.rnews.databinding.ActivityDetailBinding
 import com.example.rnews.model.ArticleResponse
@@ -90,7 +87,6 @@ class DetailActivity : AppCompatActivity() {
             R.id.share_option -> {
                 val share = Intent(Intent.ACTION_SEND)
                 share.type = "text/plain"
-                share.addFlags(Intent.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET)
                 share.putExtra(Intent.EXTRA_TEXT, newsUrl)
                 startActivity(Intent.createChooser(share, "Bagikan ke : "))
                 true

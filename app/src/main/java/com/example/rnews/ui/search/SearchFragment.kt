@@ -1,34 +1,22 @@
 package com.example.rnews.ui.search
 
 import android.content.Intent
-import android.opengl.Visibility
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.rnews.BuildConfig
-import com.example.rnews.api.ApiConfig
 import com.example.rnews.databinding.FragmentSearchBinding
 import com.example.rnews.model.ArticleResponse
-import com.example.rnews.model.NewsResponse
 import com.example.rnews.ui.adapter.NewsAdapter
 import com.example.rnews.ui.detail.DetailActivity
-import com.example.rnews.ui.menu.MenuViewModel
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 
 class SearchFragment : Fragment() {
 
     private var _binding: FragmentSearchBinding? = null
-
     private val binding get() = _binding!!
 
     private lateinit var searchViewModel: SearchViewModel
