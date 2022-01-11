@@ -13,16 +13,16 @@ data class ArticleResponse(
     var author: String? = "",
 
     @SerializedName("title")
-    var title: String = "",
+    var title: String? = "",
 
     @SerializedName("description")
-    var description: String = "",
+    var description: String? = "",
 
     @SerializedName("url")
-    var url: String = "",
+    var url: String? = "",
 
     @SerializedName("urlToImage")
-    var urlToImage: String = "",
+    var urlToImage: String? = "",
 
     @SerializedName("publishedAt")
     var publishedAt: String? = "",

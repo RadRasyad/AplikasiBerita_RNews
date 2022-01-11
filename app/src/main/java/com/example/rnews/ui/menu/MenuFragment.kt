@@ -2,6 +2,7 @@ package com.example.rnews.ui.menu
 
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -16,12 +17,13 @@ import com.example.rnews.databinding.FragmentMenuBinding
 import com.example.rnews.helper.ViewModelFactory
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 
-private var _binding: FragmentMenuBinding? = null
-private val binding get() = _binding!!
 
-private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "settings")
+
+val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "settings")
 
 class MenuFragment : Fragment() {
+    private var _binding: FragmentMenuBinding? = null
+    private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -30,8 +32,6 @@ class MenuFragment : Fragment() {
     ): View {
 
         _binding = FragmentMenuBinding.inflate(inflater, container, false)
-
-
         return binding.root
     }
 
@@ -44,23 +44,54 @@ class MenuFragment : Fragment() {
 
     private fun themeDialog() {
 
-        val pref = SettingPreferences.getInstance(requireActivity().dataStore)
-        val menuViewModel = ViewModelProvider(this, ViewModelFactory(pref)).get(MenuViewModel::class.java)
-
         val singleItems = arrayOf("Light", "Dark", "Default")
-        var choosed = menuViewModel.getThemeSettings()
-        val checkedItem = 2
+        var checkedItem = 2
+
+        val pref = SettingPreferences.getInstance(requireActivity().dataStore)
+        val menuViewModel = ViewModelProvider(this, ViewModelFactory(pref))[MenuViewModel::class.java]
+
+        menuViewModel.getThemeSettings().observe(viewLifecycleOwner, {
+            theme: Int ->
+            when (theme) {
+                0 -> {
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+                    menuViewModel.saveThemeSetting(0)
+                    checkedItem = 0
+                }
+                1 -> {
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+                    menuViewModel.saveThemeSetting(1)
+                    checkedItem = 1
+                }
+                else -> {
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
+                    menuViewModel.saveThemeSetting(2)
+                    checkedItem = 2
+                }
+            }
+        })
 
         MaterialAlertDialogBuilder(requireContext())
             .setTitle(resources.getString(R.string.theme))
-
-            .setPositiveButton(resources.getString(R.string.ok)) { dialog, which ->
-                // Respond to positive button press
-            }
-            // Single-choice items (initialized with checked item)
-            .setSingleChoiceItems(singleItems, checkedItem) { dialog, which ->
-                // Respond to item chosen
+            .setSingleChoiceItems(singleItems, checkedItem) { _, which ->
                 when(which) {
+                    0 ->{
+                        checkedItem = 0
+                    }
+                    1 ->{
+                        checkedItem = 1
+
+                    }
+                    2 ->{
+                        checkedItem = 2
+                    }
+                }
+            }
+            .setNeutralButton("Cancel") { dialog,_ ->
+                dialog.cancel()
+            }
+            .setPositiveButton(resources.getString(R.string.ok)) { _, _ ->
+                when(checkedItem) {
                     0 ->{
                         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
                         menuViewModel.saveThemeSetting(0)
@@ -73,13 +104,17 @@ class MenuFragment : Fragment() {
                     2 ->{
                         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
                         menuViewModel.saveThemeSetting(2)
-
                     }
                 }
-
+                Log.d("radio pos", checkedItem.toString())
             }
             .show()
+
     }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
 
 }

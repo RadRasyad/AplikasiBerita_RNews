@@ -84,12 +84,17 @@ class SearchFragment : Fragment() {
     }
 
     private fun showProgress(state: Boolean) {
-        if (state==true) {
+        if (state) {
             binding.lProgressbar.visibility = View.VISIBLE
         }
         else {
             binding.lProgressbar.visibility = View.GONE
         }
 
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }

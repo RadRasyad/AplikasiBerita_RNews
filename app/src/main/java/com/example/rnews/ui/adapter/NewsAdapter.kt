@@ -1,7 +1,5 @@
 package com.example.rnews.ui.adapter
 
-import android.content.Context
-import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -10,9 +8,8 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.example.rnews.databinding.NewsRowBinding
 import com.example.rnews.model.ArticleResponse
-import com.example.rnews.ui.detail.DetailActivity
 
-class NewsAdapter() : RecyclerView.Adapter<NewsAdapter.NewsViewHolder>() {
+class NewsAdapter : RecyclerView.Adapter<NewsAdapter.NewsViewHolder>() {
 
     private var listNews = ArrayList<ArticleResponse>()
     private var onItemClickCallback: OnItemClickCallback? = null
