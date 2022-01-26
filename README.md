@@ -1,5 +1,5 @@
 # AplikasiBerita_RNews
-## Android Simple News App(on development)
+## Android Simple News App
 
 News App with API from [News API](https://newsapi.org/).\
 Generate your API Key from News API and\
