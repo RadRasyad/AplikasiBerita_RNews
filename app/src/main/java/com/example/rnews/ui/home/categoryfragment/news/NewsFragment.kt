@@ -13,6 +13,7 @@ import com.example.rnews.databinding.FragmentNewsBinding
 import com.example.rnews.model.ArticleResponse
 import com.example.rnews.ui.adapter.NewsAdapter
 import com.example.rnews.ui.detail.DetailActivity
+import com.example.rnews.ui.detail.DetailViewModel
 
 
 class NewsFragment : Fragment() {
@@ -21,6 +22,7 @@ class NewsFragment : Fragment() {
 
     private lateinit var newsViewModel: NewsViewModel
     private lateinit var adapter: NewsAdapter
+    private lateinit var detailVM: DetailViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

@@ -13,12 +13,14 @@
         <entry key="..\:/Aplikasiku/RNews/app/src/main/res/drawable/ic_newspaper_black.xml" value="0.32546296296296295" />
         <entry key="..\:/Aplikasiku/RNews/app/src/main/res/drawable/ic_newspaper_line.xml" value="0.325" />
         <entry key="..\:/Aplikasiku/RNews/app/src/main/res/drawable/nav_home_selector.xml" value="0.32546296296296295" />
+        <entry key="..\:/Aplikasiku/RNews/app/src/main/res/drawable/nav_search_selector.xml" value="0.32546296296296295" />
         <entry key="..\:/Aplikasiku/RNews/app/src/main/res/drawable/search_top_bg.xml" value="0.3" />
         <entry key="..\:/Aplikasiku/RNews/app/src/main/res/drawable/search_widget_bg.xml" value="0.3004273504273504" />
         <entry key="..\:/Aplikasiku/RNews/app/src/main/res/layout/activity_aaaa.xml" value="0.2962962962962963" />
         <entry key="..\:/Aplikasiku/RNews/app/src/main/res/layout/activity_detail.xml" value="0.3432971014492754" />
         <entry key="..\:/Aplikasiku/RNews/app/src/main/res/layout/activity_main.xml" value="0.33" />
         <entry key="..\:/Aplikasiku/RNews/app/src/main/res/layout/activity_splash_screen.xml" value="0.3106481481481482" />
+        <entry key="..\:/Aplikasiku/RNews/app/src/main/res/layout/empty_state.xml" value="0.3111111111111111" />
         <entry key="..\:/Aplikasiku/RNews/app/src/main/res/layout/fragment_business.xml" value="0.3333333333333333" />
         <entry key="..\:/Aplikasiku/RNews/app/src/main/res/layout/fragment_entertainment.xml" value="0.32155797101449274" />
         <entry key="..\:/Aplikasiku/RNews/app/src/main/res/layout/fragment_health.xml" value="0.3328125" />

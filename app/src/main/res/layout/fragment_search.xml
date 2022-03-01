@@ -98,5 +98,9 @@
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
+    <include
+        android:id="@+id/empty_state"
+        layout="@layout/empty_state"
+        android:visibility="visible"/>
 
 </FrameLayout>

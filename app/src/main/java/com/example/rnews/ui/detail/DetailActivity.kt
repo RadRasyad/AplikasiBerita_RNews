@@ -8,9 +8,11 @@ import android.view.MenuItem
 import android.view.View
 import android.webkit.WebView
 import android.webkit.WebViewClient
+import androidx.lifecycle.ViewModelProvider
 import com.example.rnews.R
 import com.example.rnews.databinding.ActivityDetailBinding
 import com.example.rnews.model.ArticleResponse
+import com.example.rnews.model.DetailResponse
 import com.example.rnews.model.NewsResponse
 
 private lateinit var binding: ActivityDetailBinding
@@ -34,6 +36,8 @@ class DetailActivity : AppCompatActivity() {
             newsTitle = article?.title
             newsUrl = article?.url
         }
+
+
 
         initActionBar()
         initWebView()

@@ -35,6 +35,7 @@ class SearchFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        emptyState(true)
         searchNews()
 
         binding.apply {
@@ -47,6 +48,7 @@ class SearchFragment : Fragment() {
         searchViewModel = ViewModelProvider(requireActivity())[SearchViewModel::class.java]
         searchViewModel.getNews().observe(requireActivity(),{
             if (it!=null) {
+                emptyState(false)
                 adapter.setList(it)
                 showProgress(false)
                 binding.rvNews.adapter = adapter
@@ -89,6 +91,16 @@ class SearchFragment : Fragment() {
         }
         else {
             binding.lProgressbar.visibility = View.GONE
+        }
+
+    }
+
+    private fun emptyState(state: Boolean) {
+        if (state) {
+            binding.emptyState.root.visibility = View.VISIBLE
+        }
+        else {
+            binding.emptyState.root.visibility = View.GONE
         }
 
     }
