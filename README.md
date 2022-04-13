@@ -1,4 +1,7 @@
 # AplikasiBerita_RNews
+Sample App\
+[![RNews](https://img.shields.io/badge/RNews-APK-black.svg?style=for-the-badge&logo=android)](https://github.com/RadRasyad/AplikasiBerita_RNews/raw/master/debug/app-debug.apk)
+
 ## Android Simple News App
 
 News App with API from [News API](https://newsapi.org/).\
